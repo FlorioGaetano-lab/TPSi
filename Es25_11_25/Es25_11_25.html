@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
     <title>Registrazione dati</title>
     <link rel="stylesheet" href="stile.css"> 
 </head>
@@ -44,9 +43,9 @@
                 <div class="input-row">
                     <label>Sesso:</label>
                     <div>
-                        <label><input type="radio" name="sesso" value="Maschio"> Maschio</label>
-                        <label><input type="radio" name="sesso" value="Femmina"> Femmina</label>
-                        <label><input type="radio" name="sesso" value="Altro"> Altro</label>
+                        <input type="radio" name="sesso" value="Maschio"> Maschio
+                        <input type="radio" name="sesso" value="Femmina"> Femmina
+                        <input type="radio" name="sesso" value="Altro"> Altro
                     </div>
                 </div>
 
@@ -182,20 +181,20 @@
                 <div class="input-row">
                     <label for="materie">Materie preferite (max 3):</label>
                     <select id="materie" multiple="multiple" size="11">
+                        <option value="Storia">Storia</option>
+                        <option value="Sistemi e Reti">Sistemi e Reti</option>
+                        <option value="Lingua e Letteratura Italiana">Lingua e Letteratura Italiana</option>
+                        <option value="Telecomunicazioni">Telecomunicazioni</option>
+                        <option value="Matematica">Matematica</option>
+                        <option value="TPSi">TPSi</option>
+                        <option value="Scienze Motorie">Scienze Motorie</option>
+                        <option value="Religione">Religione</option>
+                        <option value="Lingua Inglese">Lingua Inglese</option>
                         <option value="Educazione civica">Educazione civica</option>
                         <option value="Informatica">Informatica</option>
-                        <option value="Lingua e Letteratura Italiana">Lingua e Letteratura Italiana</option>
-                        <option value="Lingua Inglese">Lingua Inglese</option>
-                        <option value="Matematica">Matematica</option>
-                        <option value="Religione">Religione</option>
-                        <option value="Scienze Motorie">Scienze Motorie</option>
-                        <option value="Sistemi e Reti">Sistemi e Reti</option>
-                        <option value="Storia">Storia</option>
-                        <option value="TPSi">TPSi</option>
-                        <option value="Telecomunicazioni">Telecomunicazioni</option>
                     </select>
-                    <p style="font-size: 12px; color: #555; margin-top: 5px;">
-                        Tieni premuto *CTRL* per selezionare più materie.
+                    <p style="font-size: 10px; color: #555; margin-top: 5px;">
+                        Tieni premuto CTRL per selezionare più materie
                     </p>
                 </div>
                 
@@ -210,6 +209,7 @@
 
     <script>
         function stampaDati() {
+            // Dichiaro variabile user di tipo oggetto vuoto
             let user = {};
             // Recupero dei valori semplici
             user.nome = document.getElementById("nome").value.trim();
@@ -222,7 +222,7 @@
             // Gestione Sesso (Radio button)
             let selezioneSesso = document.querySelector('input[name="sesso"]:checked');
             user.sesso = "Non specificato";
-            if (selezioneSesso) {
+            if (selezioneSesso  != null) {
                 user.sesso = selezioneSesso.value;
             }
             
@@ -238,7 +238,7 @@
                 return;
             }
 
-            // Gestione Mezzi (Checkbox) - Versione semplificata
+            // Gestione Mezzi
             let mezziSelezionati = document.querySelectorAll('input[name="mezzi"]:checked');
             user.mezzi = [];
             for (let i = 0; i < mezziSelezionati.length; i++) {
@@ -248,7 +248,7 @@
                 user.mezzi = ["Nessuno"];
             }
 
-            // Gestione Materie Preferite (Listbox multipla) - Versione semplificata
+            // Gestione Materie Preferite
             let materieSelezionate = document.getElementById("materie").selectedOptions;
             let materieSel = [];
             for (let i = 0; i < materieSelezionate.length; i++) {
@@ -273,7 +273,7 @@
                 return;
             }
             
-            const eta = new Date().getFullYear() - anno;
+            const eta = 2025 - anno;
             let gen = "";
             
             if (anno >= 1901 && anno <= 1927) {
