@@ -1,0 +1,135 @@
+/* Reset base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Sfondo generale */
+body {
+    background: linear-gradient(135deg, #4c8cff, #6ad2ff);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Card principale */
+.card {
+    background: #fff;
+    width: 900px;
+    max-width: 100%;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    display: flex;
+    gap: 20px;
+}
+
+/* Area del form */
+.form-area {
+    width: 60%;
+}
+
+/* Titolo */
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Griglia inputs */
+.input-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Riga singola */
+.input-row {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Etichette */
+label {
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* Campi input */
+input[type="text"],
+input[type="number"],
+select {
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus,
+select:focus {
+    border-color: #4c8cff;
+    box-shadow: 0 0 5px rgba(76, 140, 255, 0.4);
+}
+
+/* Checkbox e Radio */
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Pulsante invia */
+.actions {
+    margin-top: 20px;
+}
+
+button {
+    padding: 12px 18px;
+    background: #4c8cff;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #3a74d9;
+}
+
+/* Area di output */
+#output {
+    width: 40%;
+    background: #f8f9ff;
+    border-left: 3px solid #4c8cff;
+    padding: 20px;
+    border-radius: 12px;
+    display: none;
+    font-size: 15px;
+}
+
+#output h3 {
+    margin-bottom: 12px;
+    color: #333;
+}
+
+#output div {
+    margin-bottom: 6px;
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+    .card {
+        flex-direction: column;
+    }
+
+    #output, .form-area {
+        width: 100%;
+    }
+}
