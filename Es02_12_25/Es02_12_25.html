@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <title>
+      Stella a 5 punte in un cerchio
+    </title>
+  </head>
+  <body>
+    <div>
+      <h2>
+        Canva di una stella a 5 punte in un cerchio.
+      </h2>
+      <canva id="MyCanvas" width=500 height=500 style="border:1px solid black "></canva>
+    </div>
+    <script>
+      function disegnaCerchio(){
+      const canvas = document.getElementById("MyCanvas");
+      const ctx = canvas.getContext("2d");
+      const x = 250;
+      const y= 250;
+      const raggio= 250;
+      ctx.beginPath();
+      ctx.arc(x,y,raggio,0,2*Math.PI);
+      ctx.stroke();
+      }
+      function disegnaStella(){
+        const canvas = document.getElementById("MyCanvas");
+        const ctx = canvas.getContext("2d");
+        
+        // Punti esterni
+        const P1 = { x: 250.00, y:   0.00 };
+        const P2 = { x: 487.76, y: 172.75 };
+        const P3 = { x: 396.95, y: 452.25 };
+        const P4 = { x: 103.05, y: 452.25 };
+        const P5 = { x:  12.24, y: 172.75 };
+        // Punti interni
+        const I1 = { x: 306.13, y: 172.75 };
+        const I2 = { x: 340.82, y: 279.51 };
+        const I3 = { x: 250.00, y: 345.49 };
+        const I4 = { x: 159.18, y: 279.51 };
+        const I5 = { x: 193.87, y: 172.75 };
+        
+        ctx.beginPath();
+        ctx.moveTo(P1.x, P1.y);
+        ctx.lineTo(I1.x, I1.y);
+        ctx.lineTo(P2.x, P2.y);
+        ctx.lineTo(I2.x, I2.y);
+        ctx.lineTo(P3.x, P3.y);
+        ctx.lineTo(I3.x, I3.y);
+        ctx.lineTo(P4.x, P4.y);
+        ctx.lineTo(I4.x, I4.y);
+        ctx.lineTo(P5.x, P5.y);
+        ctx.lineTo(I5.x, I5.y);
+        ctx.closePath();
+        
+        ctx.stroke();
+      }
+      disegnaCerchio();
+      disegnaStella();
+    </script>
+  </body>
