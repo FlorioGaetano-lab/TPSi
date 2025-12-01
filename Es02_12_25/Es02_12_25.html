@@ -19,7 +19,6 @@
       const raggio= 250;
       ctx.beginPath();
       ctx.arc(x,y,raggio,0,2*Math.PI);
-      ctx.closePath();
       ctx.stroke();
       }
       //Le coordinate dei punti le ho calcolate con l'Ai perchè non ho trovato una formula adatta alle mie conoscenza da usare
@@ -51,8 +50,6 @@
         ctx.lineTo(I4.x, I4.y);
         ctx.lineTo(P5.x, P5.y);
         ctx.lineTo(I5.x, I5.y);
-        ctx.closePath();
-
         ctx.stroke();
       }
       disegnaCerchio();
