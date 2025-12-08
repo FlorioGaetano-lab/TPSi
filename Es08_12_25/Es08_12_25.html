@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grafico femminicidi con Canvas</title>
+  <style>
+    canvas {
+      border: 1 solid #333;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="grafico" width="400" height="300"></canvas>
+
+<script>
+const coordinate = [
+  { x: 100, y: 100 },
+  { x: 120, y: 150 },
+  { x: 180, y: 90 },
+  { x: 250, y: 200 }
+];
+
+const canvas = document.getElementById("grafico");
+const ctx = canvas.getContext("2d");
+
+ctx.beginPath();
+
+
+ctx.moveTo(coordinate[0].x, coordinate[0].y);
+
+
+for (let i = 1; i < coordinate.length; i++) {
+  ctx.lineTo(coordinate[i].x, coordinate[i].y);
+}
+
+
+ctx.stroke();
+</script>
+
+</body>
+</html>
