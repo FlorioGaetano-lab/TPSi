@@ -5,14 +5,11 @@
 </head>
 <body>
 
-<canvas id="grafico" width="400" height="300" style="border:1px solid black;" ></canvas>
+<canvas id="grafico" width="650" height="300" style="border:1px solid black;" ></canvas>
 
 <script>
 const coordinate = [
-  { x: 100, y: 100 },
-  { x: 120, y: 150 },
-  { x: 180, y: 90 },
-  { x: 250, y: 200 }
+  
 ];
 
 const canvas = document.getElementById("grafico");
@@ -22,7 +19,7 @@ const ctx1 = canvas.getContext("2d");
   
 ctxx.beginPath();
 ctxx.moveTo(0,250);
-ctxx.lineTo(400,250);
+ctxx.lineTo(600,250);
 ctxx.stroke();
 
 ctxy.beginPath();
