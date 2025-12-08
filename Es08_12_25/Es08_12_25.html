@@ -19,10 +19,17 @@ const canvas = document.getElementById("grafico");
 const ctxx = canvas.getContext("2d");
 const ctxy = canvas.getContext("2d");
 const ctx1 = canvas.getContext("2d");
+  
 ctxx.beginPath();
 ctxx.moveTo(0,250);
 ctxx.lineTo(400,250);
 ctxx.stroke();
+
+ctxy.beginPath();
+ctxy.moveTo(20,0);
+ctxy.lineTo(20,300);
+ctxy.stroke();
+  
 ctx1.beginPath();
 
 
