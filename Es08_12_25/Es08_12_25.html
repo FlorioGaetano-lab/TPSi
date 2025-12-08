@@ -5,22 +5,22 @@
 </head>
 <body>
 
-<canvas id="grafico" width="650" height="300" style="border:1px solid black;" ></canvas>
+<canvas id="grafico" width="600" height="300" style="border:1px solid black;" ></canvas>
 
 <script>
 const coordinate = [
-  {x:50,y:220}
-  {x:100,y:180}
-  {x:150,y:200}
-  {x:200,y:200}
-  {x:250,y:220}
-  {x:300,y:260}
-  {x:350,y:280}
-  {x:400,y:260}
-  {x:450,y:180}
-  {x:500,y:200}
-  {x:550,y:260}
-  {x:600,y:260}
+  {x:0,y:220},
+  {x:50,y:180},
+  {x:100,y:200},
+  {x:150,y:200},
+  {x:200,y:220},
+  {x:250,y:260},
+  {x:300,y:280},
+  {x:350,y:260},
+  {x:400,y:180},
+  {x:450,y:200},
+  {x:500,y:260},
+  {x:550,y:260},
 ];
 
 const canvas = document.getElementById("grafico");
@@ -30,26 +30,26 @@ const ctx1 = canvas.getContext("2d");
   
 ctxx.beginPath();
 ctxx.moveTo(0,250);
-ctxx.lineTo(650,250);
+ctxx.lineTo(600,250);
 ctxx.stroke();
-
+  
 ctxy.beginPath();
 ctxy.moveTo(20,0);
 ctxy.lineTo(20,300);
 ctxy.stroke();
   
-ctx1.beginPath();
+ctx.beginPath();
 
 
-ctx1.moveTo(coordinate[0].x, coordinate[0].y);
+ctx.moveTo(coordinate[0].x, coordinate[0].y);
 
 
 for (let i = 1; i < coordinate.length; i++) {
-  ctx1.lineTo(coordinate[i].x, coordinate[i].y);
+  ctx.lineTo(coordinate[i].x, coordinate[i].y);
 }
 
 
-ctx1.stroke();
+ctx.stroke();
 </script>
 
 </body>
