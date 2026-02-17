@@ -22,14 +22,16 @@
     </div>
 
     <script>
-        let p1 = "";
-        let p2 = "";
         function salvaParametri() {
-            p1 = document.getElementById("param1").value;
-            p2 = document.getElementById("param2").value;
+            let p1 = document.getElementById("param1").value;
+            let p2 = document.getElementById("param2").value;
+
+            localStorage.setItem("parametro1", p1);
+            localStorage.setItem("parametro2", p2);
         }
+
         function vaiReceiver() {
-            window.location.href ="receiver.html?param1=" + p1 + "&param2=" + p2;
+            window.location.href = "receiver.html" ;
         }
     </script>
 
