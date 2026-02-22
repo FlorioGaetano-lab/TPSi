@@ -22,9 +22,12 @@
     </div>
 
     <script>
+        let p1= "";
+        let p2= "";
         function salvaParametri() {
-            let p1 = document.getElementById("param1").value;
-            let p2 = document.getElementById("param2").value;
+            p1 = document.getElementById("param1").value;
+            p2 = document.getElementById("param2").value;
+            alert ("Parametri salvati");
         }
         function vaiReceiver() {
             window.location.href ="receiver.html?param1=" + p1 + "&param2=" + p2;
