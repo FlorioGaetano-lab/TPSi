@@ -1,0 +1,23 @@
+// ==========================================
+// DATABASE PRODOTTI
+// ==========================================
+const defaultProdotti = [
+    { id: 1, nome: "Mouse Pro Wireless", prezzo: 89.99, stock: 15, categoria: "Periferiche", marca: "LogiTech", modello: "Pro X Superlight", descrizione: "Sensore 25K, zero latenza, ultra leggero.", caratteristiche: "Wireless, 63g, 70h batteria" },
+    { id: 2, nome: "Tastiera Meccanica", prezzo: 149.90, stock: 8, categoria: "Periferiche", marca: "KeyClick", modello: "K8 Pro", descrizione: "Switch lineari, telaio in alluminio.", caratteristiche: "Hot-swappable, RGB, Bluetooth" },
+    { id: 3, nome: "Cuffie Noise Cancelling", prezzo: 249.00, stock: 12, categoria: "Audio", marca: "SoundMax", modello: "QC Ultra", descrizione: "Cancellazione attiva del rumore e audio Hi-Res.", caratteristiche: "ANC, Audio Spaziale, 24h batteria" },
+    { id: 4, nome: "Cavo USB-C Intrecciato", prezzo: 19.99, stock: 50, categoria: "Accessori", marca: "DuraWire", modello: "ToughCable", descrizione: "Supporta ricarica rapida 100W, lungo 2 metri.", caratteristiche: "Nylon intrecciato, 100W PD" },
+    { id: 5, nome: "Monitor 4K ProArt 27\"", prezzo: 699.00, stock: 4, categoria: "Monitor", marca: "Asus", modello: "ProArt 27", descrizione: "Pannello IPS 4K con calibrazione colore professionale.", caratteristiche: "4K UHD, 100% sRGB, USB-C 65W" },
+    { id: 6, nome: "Striscia LED Smart", prezzo: 39.99, stock: 25, categoria: "Smart Home", marca: "LumiHome", modello: "Lightstrip", descrizione: "Sincronizzazione con la musica e controllo vocale.", caratteristiche: "RGBIC, 5 metri, WiFi" },
+    { id: 7, nome: "Caricatore GaN 120W", prezzo: 59.90, stock: 30, categoria: "Accessori", marca: "VoltCore", modello: "Nexode", descrizione: "Ricarica 4 dispositivi contemporaneamente.", caratteristiche: "GaNTech, 3x USB-C, 1x USB-A" },
+    { id: 8, nome: "Tazza Smart Termica", prezzo: 129.00, stock: 10, categoria: "Smart Home", marca: "Ember", modello: "Mug 2", descrizione: "Mantiene il caffè caldo per ore via app.", caratteristiche: "Controllo App, Batteria 1.5h" },
+    { id: 9, nome: "Visore VR Lite", prezzo: 349.00, stock: 6, categoria: "Wearable & VR", marca: "FutureTech", modello: "Quest 3S", descrizione: "Realtà mista ad alta risoluzione senza cavi.", caratteristiche: "Sensori avanzati, Wireless" },
+    { id: 10, nome: "Smartwatch Elite", prezzo: 299.99, stock: 18, categoria: "Wearable & VR", marca: "ChronoTech", modello: "Watch Ultra", descrizione: "Sensori biometrici avanzati e cassa in titanio.", caratteristiche: "Titanio, GPS dual-band, ECG" },
+    { id: 11, nome: "Trackball Ergonomico Orbit", prezzo: 44.99, stock: 22, categoria: "Periferiche", marca: "Kensington", modello: "Orbit X", descrizione: "Mouse trackball per ridurre l'affaticamento del polso.", caratteristiche: "Sfera, design ergonomico" },
+    { id: 12, nome: "Speaker Bluetooth Pulse", prezzo: 69.99, stock: 14, categoria: "Audio", marca: "JBL", modello: "Pulse Mini", descrizione: "Speaker portatile con effetti luminosi a ritmo di musica.", caratteristiche: "Bluetooth 5.0, 12h, LED" },
+    { id: 13, nome: "Caricatore Wireless Duo", prezzo: 34.99, stock: 40, categoria: "Accessori", marca: "Belkin", modello: "BoostCharge", descrizione: "Ricarica wireless per smartphone e auricolari.", caratteristiche: "Qi charging, doppia ricarica" },
+    { id: 14, nome: "Monitor UltraWide 34\" Curvo", prezzo: 399.99, stock: 5, categoria: "Monitor", marca: "Samsung", modello: "Odyssey G5", descrizione: "Ideale per multitasking e gaming immersivo.", caratteristiche: "3440x1440, 165Hz, Curvatura 1000R" },
+    { id: 15, nome: "Lampada Smart Touch Aura", prezzo: 59.99, stock: 16, categoria: "Smart Home", marca: "Xiaomi", modello: "Bedside 2", descrizione: "Lampada con controllo touch e regolazione app.", caratteristiche: "RGB, WiFi, Assistenti vocali" },
+    { id: 16, nome: "Smartband Fitness Core", prezzo: 49.99, stock: 35, categoria: "Wearable & VR", marca: "Huawei", modello: "Band 8", descrizione: "Monitoraggio attività, sonno e battito cardiaco.", caratteristiche: "AMOLED, waterproof, 14 giorni" },
+    { id: 17, nome: "Soundbar Compatta Smart", prezzo: 279.00, stock: 7, categoria: "Audio", marca: "Sonos", modello: "Ray", descrizione: "Migliora l'audio della tua TV o del PC con bassi sorprendenti.", caratteristiche: "WiFi, AirPlay 2, Ottico" },
+    { id: 18, nome: "Display UltraWide OLED 49\"", prezzo: 1499.00, stock: 2, categoria: "Monitor", marca: "Samsung", modello: "Odyssey OLED G9", descrizione: "Contrasto infinito OLED e curvatura estrema.", caratteristiche: "5120x1440, 240Hz, 0.03ms" }
+];

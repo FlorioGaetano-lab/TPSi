@@ -1,0 +1,53 @@
+
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo - Tech Essentials</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="top-menu" role="navigation">
+        <div class="nav-container">
+            <strong>Tech Essentials</strong>
+            <ul>
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="catalogo.html" class="active-link">Catalogo</a></li>
+                <li><a href="carrello.html">Carrello (<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="app-container">
+        <div class="page-section reveal">
+            <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+                <h1 class="text-gradient" style="font-size: 3rem; margin-bottom: 1rem;">Catalogo Prodotti</h1>
+				<div class="search-bar-container" style="margin-bottom: 2rem; display: flex; justify-content: center;">
+    <input type="text" id="search-input" 
+           placeholder="🔍 Cerca per nome, descrizione, caratteristiche... (es. schermo, bluetooth)" 
+           style="width: 100%; max-width: 500px; padding: 12px 20px; border-radius: 50px; 
+                  border: 1px solid rgba(255,255,255,0.2); background: var(--card-bg); 
+                  color: var(--text-color); font-size: 1rem;">
+</div>
+				
+				
+				
+                <p style="color: var(--text-dim); font-size: 1.2rem;">Esplora l'intera collezione e componi il tuo setup perfetto.</p>
+            </div>
+            
+            <div id="dynamic-catalog"></div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p>&copy; 2026 Tech Essentials Showroom. Designed for the future.</p>
+    </div>
+
+    <script src="prodotti.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

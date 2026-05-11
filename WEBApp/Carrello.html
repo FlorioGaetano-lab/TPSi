@@ -1,0 +1,48 @@
+
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrello - Tech Essentials</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div id="top-menu" role="navigation">
+        <div class="nav-container">
+            <strong>Tech Essentials</strong>
+            <ul>
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="catalogo.html">Catalogo</a></li>
+                <li><a href="carrello.html" class="active-link">Carrello (<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="app-container">
+        <div class="page-section reveal">
+            <h1 class="text-gradient" style="text-align: center; margin-bottom: 2rem;">Il Tuo Carrello</h1>
+            
+            <div id="cart-items-container">
+                </div>
+            
+            <div id="cart-summary" class="content-box mt-3" style="display:none; background-color: var(--card-bg); padding: 2rem; border-radius: var(--border-radius);">
+                <div style="display:flex; justify-content: space-between; align-items: center;">
+                    <h3 style="margin:0;">Totale Ordine: <span id="cart-total-value" class="text-gradient">€0.00</span></h3>
+                    <button class="btn btn-primary" onclick="alert('Ordine confermato con successo! Grazie per aver scelto Tech Essentials. 🚀')">Procedi all'Acquisto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p>&copy; 2026 Tech Essentials Showroom. Designed for the future.</p>
+    </div>
+
+    <script src="prodotti.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

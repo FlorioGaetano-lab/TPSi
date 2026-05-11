@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Essentials | Scopri il Futuro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="top-menu" role="navigation">
+        <div class="nav-container">
+            <strong>Tech Essentials</strong>
+            <ul>
+                <li><a href="HomePage.html" class="active-link">Home</a></li>
+                <li><a href="catalogo.html">Catalogo</a></li>
+                <li><a href="carrello.html">Carrello (<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="app-container">
+
+        <div class="hero-section reveal">
+            <div class="hero-content">
+                <span class="pill-badge">🚀 Nuova Collezione 2026</span>
+                <h1>Scopri i migliori<br><span class="text-gradient">prodotti tech</span></h1>
+                <p>Una selezione curata di gadget per rivoluzionare il tuo spazio di lavoro, la tua casa e il tuo tempo libero. Nessun rumore, solo essenzialità.</p>
+                <div class="hero-buttons">
+                    <a href="catalogo.html" class="btn btn-primary">Esplora il Catalogo</a>
+                    <a href="#guide" class="btn btn-secondary">Leggi le Guide</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="img/stm.png" alt="Setup tecnologico moderno">
+                <div class="glow-bg"></div>
+            </div>
+        </div>
+
+        <div class="trust-section page-section reveal">
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <div class="icon">🎯</div>
+                    <h3>Selezione Curata</h3>
+                    <p>Testiamo ogni prodotto per garantirti solo l'eccellenza.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="icon">🔄</div>
+                    <h3>Aggiornamenti Frequenti</h3>
+                    <p>Il catalogo viene rinnovato con le ultime novità di mercato.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="icon">⚖️</div>
+                    <h3>Confronto Diretto</h3>
+                    <p>Schede chiare per aiutarti a scegliere il dispositivo perfetto.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="categories-section page-section reveal">
+            <h2 class="section-title">Esplora per Categoria</h2>
+            <div class="categories-grid">
+                <a href="catalogo.html#cat-smarthome" class="category-card">
+                    <div class="icon">🏠</div>
+                    <h3>Smart Home</h3>
+                </a>
+                <a href="catalogo.html#cat-audio" class="category-card">
+                    <div class="icon">🎧</div>
+                    <h3>Audio</h3>
+                </a>
+                <a href="catalogo.html#cat-wearable" class="category-card">
+                    <div class="icon">⌚</div>
+                    <h3>Wearable</h3>
+                </a>
+                <a href="catalogo.html#cat-periferiche" class="category-card">
+                    <div class="icon">⌨️</div>
+                    <h3>Periferiche</h3>
+                </a>
+            </div>
+        </div>
+
+        <!-- SEZIONE IN TENDENZA - DINAMICA -->
+        <div class="trending-section page-section reveal">
+            <div class="section-header">
+                <h2 class="section-title">In Tendenza</h2>
+                <a href="catalogo.html" class="link-more">Vedi tutti &rarr;</a>
+            </div>
+            <div id="home-trending-products" class="product-grid">
+                <!-- I prodotti verranno inseriti dinamicamente da JS -->
+            </div>
+        </div>
+
+        <!-- SEZIONE SCELTE DELLA SETTIMANA - DINAMICA -->
+        <div id="home-editorial" class="editorial-section page-section reveal">
+            <!-- Contenuto generato dinamicamente -->
+        </div>
+
+        <div class="guides-section page-section reveal" id="guide">
+            <div class="section-header">
+                <h2 class="section-title">Le Nostre Guide</h2>
+            </div>
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <div class="icon">🖥️</div>
+                    <h3>Scegliere il Monitor Perfetto</h3>
+                    <p>Scopri le differenze tra OLED, IPS e VA per trovare lo schermo ideale per il tuo setup.</p>
+                    <a href="articolo.html?id=1" class="link-more" style="display:inline-block; margin-top:1rem;">Leggi l'articolo &rarr;</a>
+                </div>
+                <div class="trust-card">
+                    <div class="icon">⌨️</div>
+                    <h3>Guida alle Tastiere Meccaniche</h3>
+                    <p>Switch lineari, tattili o clicky? Tutto quello che devi sapere prima dell'acquisto.</p>
+                    <a href="articolo.html?id=2" class="link-more" style="display:inline-block; margin-top:1rem;">Leggi l'articolo &rarr;</a>
+                </div>
+                <div class="trust-card">
+                    <div class="icon">🏠</div>
+                    <h3>Smart Home Starter Kit</h3>
+                    <p>I primi 3 dispositivi essenziali per iniziare ad automatizzare la tua casa facilmente.</p>
+                    <a href="articolo.html?id=3" class="link-more" style="display:inline-block; margin-top:1rem;">Leggi l'articolo &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="newsletter-section page-section reveal">
+            <div class="newsletter-box">
+                <h2>Rimani Aggiornato</h2>
+                <p>Unisciti a 10.000+ appassionati. Niente spam, solo le migliori scoperte tech della settimana.</p>
+                <form class="newsletter-form" id="form-newsletter">
+                    <input type="email" placeholder="La tua email migliore" required>
+                    <button type="submit" class="btn btn-primary">Iscriviti</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer">
+        <p>&copy; 2026 Tech Essentials Showroom. Designed for the future.</p>
+    </div>
+
+    <script src="prodotti.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Funzione per ottenere il percorso immagine con padding a due cifre
+        function getImagePath(id) {
+            return `img/${String(id).padStart(2, '0')}.png`;
+        }
+
+        // Carica i prodotti dinamicamente nella homepage
+        function loadHomepageProducts() {
+            if (typeof defaultProdotti === 'undefined') {
+                console.error('Database prodotti non caricato');
+                return;
+            }
+
+            // 1. Sezione "In Tendenza" - ID prodotti da mostrare (modifica a piacere)
+            const trendingIds = [9, 2, 8];
+            const trendingProducts = defaultProdotti.filter(p => trendingIds.includes(p.id));
+            const trendingContainer = document.getElementById('home-trending-products');
+            if (trendingContainer) {
+                trendingContainer.innerHTML = trendingProducts.map(p => `
+                    <div class="product-card">
+                        ${p.stock === 0 ? '<div class="badge esaurito" style="background:#ff0055; position:absolute; top:10px; left:10px;">Esaurito</div>' : ''}
+                        <a href="prodotto.html?id=${p.id}" class="card-link">
+                            <img src="${getImagePath(p.id)}" alt="${p.nome}" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x200/161e2d/ff0055?text=No+Image';">
+                            <div class="card-content">
+                                <h3>${p.nome}</h3>
+                                <p class="highlight-text">${p.marca || ''} | €${p.prezzo.toFixed(2)}</p>
+                                <p style="margin-top:0.5rem; font-size:0.9rem;">${p.descrizione.substring(0, 80)}${p.descrizione.length > 80 ? '…' : ''}</p>
+                                <button class="btn btn-primary" style="margin-top:1rem; width:100%; pointer-events:none;">Scopri</button>
+                            </div>
+                        </a>
+                    </div>
+                `).join('');
+            }
+
+            // 2. Sezione "Le Scelte della Settimana" (editorial) - prodotto con id 18 (o a piacere)
+            const editorialProduct = defaultProdotti.find(p => p.id === 18);
+            const editorialContainer = document.getElementById('home-editorial');
+            if (editorialContainer && editorialProduct) {
+                editorialContainer.innerHTML = `
+                    <h2 class="section-title">Le Scelte della Settimana</h2>
+                    <div class="editorial-row">
+                        <div class="editorial-image">
+                            <img src="${getImagePath(editorialProduct.id)}" alt="${editorialProduct.nome}" onerror="this.onerror=null;this.src='https://via.placeholder.com/500x400/161e2d/ff0055?text=No+Image';">
+                        </div>
+                        <div class="editorial-text">
+                            <span class="highlight-text">Editor's Choice</span>
+                            <h3>${editorialProduct.nome}</h3>
+                            <p>${editorialProduct.descrizione}</p>
+                            <a href="prodotto.html?id=${editorialProduct.id}" class="btn btn-outline">Scopri di più</a>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Esegue il caricamento dei prodotti dinamici dopo che prodotti.js è stato caricato
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof defaultProdotti !== 'undefined') {
+                loadHomepageProducts();
+            } else {
+                // Aspetta il caricamento di prodotti.js (eventuale fallback)
+                var checkInterval = setInterval(function() {
+                    if (typeof defaultProdotti !== 'undefined') {
+                        clearInterval(checkInterval);
+                        loadHomepageProducts();
+                    }
+                }, 100);
+            }
+        });
+    </script>
+</body>
+</html>
