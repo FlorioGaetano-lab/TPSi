@@ -121,4 +121,160 @@ body { background-color: var(--bg-color); color: var(--text-color); line-height:
     text-decoration: underline;
     opacity: 0.8;
 }
+.product-card img, .editorial-image img {
+    width: 100%;
+    height: 250px; /* O la misura che preferisci */
+    object-fit: cover; /* Mantiene le proporzioni tagliando l'eccesso */
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.05); /* Effetto zoom al passaggio del mouse */
+}
+/* ============================================================
+   MIGLIORAMENTI SOLO PER L'IMMAGINE NELLA PAGINA PRODOTTO
+   ============================================================ */
+
+/* 1. Il contenitore dell'immagine (centratura intelligente) */
+.product-detail-image {
+    background-color: rgba(255, 255, 255, 0.02); /* Sfondo leggero per dare profondità */
+    border-radius: 20px;
+    padding: 2.5rem;          /* Spazio tra bordo e immagine */
+    display: flex;
+    justify-content: center;  /* Centra orizzontalmente */
+    align-items: center;      /* Centra verticalmente */
+    min-height: 450px;        /* Altezza minima per non far saltare il layout */
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Bordo stile "Glass" */
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3); /* Ombra interna per risaltare l'oggetto */
+    position: relative;
+    overflow: hidden;
+}
+
+/* 2. L'immagine (regolazione automatica e contorni) */
+.product-detail-image img {
+    /* Regolazione dimensione senza sgranare */
+    max-width: 100%;
+    max-height: 500px;
+    width: auto;             /* Mantiene le proporzioni originali */
+    height: auto;            /* Mantiene le proporzioni originali */
+    object-fit: contain;     /* Fondamentale per la centratura perfetta */
+    
+    /* Estetica dei contorni */
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); /* Ombra esterna che dà peso all'oggetto */
+    
+    /* Animazione fluida */
+    transition: transform 0.5s ease, border-color 0.3s ease;
+}
+
+/* 3. Effetto hover leggero (bagliore sui contorni) */
+.product-detail-image img:hover {
+    transform: scale(1.02); /* Zoom quasi impercettibile per evitare sgranature */
+    border-color: var(--accent-color); /* Il bordo si colora del tuo azzurro tech */
+}
+
+/* 4. Riflesso luminoso sul contenitore (opzionale per tocco tech) */
+.product-detail-image::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+/* ============================================================
+   RESTYLING ESPANSIONE E LAYOUT ARTICOLI (GUIDE)
+   ============================================================ */
+
+/* 1. Animazione di espansione all'entrata della pagina */
+.article-section.reveal {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); /* Movimento elastico e fluido */
+}
+
+.article-section.reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* 2. Layout del contenitore articolo */
+.article-section {
+    max-width: 850px !important; /* Larghezza ottimale per la lettura */
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.5) 0%, transparent 100%);
+    border-radius: 24px;
+}
+
+/* 3. Estetica del Testo e dei Titoli (Uniforme per tutti) */
+.article-section h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+/* Stile per i sotto-titoli (es. OLED, IPS, Meccaniche ecc.) */
+.article-section h3 {
+    color: var(--accent-color);
+    font-size: 1.8rem;
+    margin: 3rem 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Aggiunge un piccolo trattino decorativo prima di ogni H3 */
+.article-section h3::before {
+    content: '';
+    width: 20px;
+    height: 2px;
+    background: var(--accent-color);
+    display: inline-block;
+}
+
+/* Formattazione paragrafi */
+.article-section p {
+    font-size: 1.2rem;
+    line-height: 1.9; /* Maggiore spazio tra le righe per non stancare la vista */
+    color: #cbd5e1;
+    margin-bottom: 1.8rem;
+    text-align: justify; /* Testo ben allineato */
+}
+
+/* 4. Estetica delle Liste (ul / ol) */
+.article-section ul, .article-section ol {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2rem 2rem 2rem 3.5rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin: 2rem 0;
+}
+
+.article-section li {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.article-section li strong {
+    color: var(--accent-color);
+}
+
+/* Effetto sfumatura finale per chiudere l'articolo */
+.article-section::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: var(--accent-color);
+    margin: 4rem auto 0;
+    border-radius: 2px;
+    opacity: 0.3;
+}
+
 
