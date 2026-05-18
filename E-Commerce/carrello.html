@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>Carrello della Spesa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1 id="store-title">Il Mio Negozio</h1>
+         <div class="cart-header">
+            <a href="carrello.html" id="cart-link">
+                🛒 <span id="cart-count">0</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="carrello-container">
+            <h2>🛒 Il tuo Carrello</h2>
+            
+            <table class="carrello-table">
+                <thead>
+                    <tr>
+                        <th>Prodotto</th>
+                        <th>Prezzo</th>
+                        <th>Azione</th>
+                    </tr>
+                </thead>
+                <tbody id="corpo-carrello">
+                    </tbody>
+            </table>
+
+            <div class="totale-carrello">
+                Totale: € <span id="totale-prezzo">0.00</span>
+            </div>
+
+            <div class="azioni-carrello">
+                <a href="index.html" class="btn" style="background-color: #95a5a6; width: auto;">Continua lo shopping</a>
+                <button onclick="generaPDF()" class="btn" style="width: auto;">Acquista e Stampa PDF 📄</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
