@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>Configurazione Piattaforma</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="config-container">
+    <h1>⚙️ Configurazione Negozio</h1>
+    <p>Usa questa pagina per caricare i prodotti e personalizzare l'aspetto del tuo negozio.</p>
+    
+    <hr>
+
+    <div class="form-group">
+        <label for="storeName">Nome del Negozio:</label>
+        <input type="text" id="storeName" placeholder="Es. Scarpe & Co., Elettronica Store...">
+    </div>
+
+    <div class="form-group">
+        <label for="csvFile">Seleziona il file prodotti (.csv):</label>
+        <input type="file" id="csvFile" accept=".csv">
+        <small>Il file deve avere le colonne: marca, modello, descrizione, immagine, prezzo</small>
+    </div>
+
+    <div class="form-group">
+        <label for="mainColor">Colore Principale del Design (CSS):</label>
+        <input type="color" id="mainColor" value="#3498db">
+    </div>
+
+    <button id="btn-salva-config" class="btn">Salva e Attiva Negozio</button>
+
+    <div id="statusMessage" class="status"></div>
+</div>
+<button onclick="location.href='index.html'" class="btn" style="background-color: #95a5a6; margin-top: 10px;">Vai al catalogo senza salvare</button>
+
+<script src="app.js"></script>
+</body>
+</html>
