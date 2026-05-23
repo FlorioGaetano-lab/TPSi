@@ -13,18 +13,41 @@ body {
     color: var(--text-color);
 }
 
-/* Header */
+/* Header standardizzato */
 header {
     background-color: var(--main-color);
     color: white;
     padding: 20px;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
 }
 
 header h1 {
     margin: 0;
     font-size: 24px;
+}
+
+header p {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.cart-header {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#cart-link {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    background: rgba(0,0,0,0.1);
+    padding: 8px 12px;
+    border-radius: 20px;
 }
 
 .container {
@@ -33,7 +56,7 @@ header h1 {
     padding: 0 20px;
 }
 
-/* Stili specifici per il Form di ini.html */
+/* Configurazione Pannello ini.html */
 .config-container {
     max-width: 600px;
     background: white;
@@ -53,11 +76,24 @@ label {
     font-weight: bold;
 }
 
-input[type="file"], input[type="color"], input[type="text"] {
+/* Input di testo e file */
+input[type="file"], input[type="text"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Selettore Colore Specifico */
+input[type="color"] {
+    width: 120px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    background: none;
     box-sizing: border-box;
 }
 
@@ -75,7 +111,7 @@ input[type="file"], input[type="color"], input[type="text"] {
     display: block;
 }
 
-/* Griglia responsive per i prodotti (index.html) */
+/* Catalogo e Card Prodotti */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -132,7 +168,6 @@ input[type="file"], input[type="color"], input[type="text"] {
     margin-bottom: 15px;
 }
 
-/* Bottoni universali */
 .btn {
     display: block;
     text-align: center;
@@ -153,7 +188,8 @@ input[type="file"], input[type="color"], input[type="text"] {
 .btn:hover {
     opacity: 0.9;
 }
-/* Stili per la pagina di Dettaglio Prodotto (prodotto.html) */
+
+/* Dettaglio Prodotto */
 .dettaglio-layout {
     display: flex;
     flex-wrap: wrap;
@@ -187,16 +223,15 @@ input[type="file"], input[type="color"], input[type="text"] {
     line-height: 1.6;
     margin-bottom: 30px;
 }
-/* Selettore quantità orizzontale */
+
 .quantita-selector {
     display: flex;
     align-items: center;
     gap: 15px;
-    margin: 20px 0;
-    flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
-.quantita-selector button {
+.quantita-selector .btn {
     width: auto;
     padding: 8px 15px;
 }
@@ -205,7 +240,8 @@ input[type="file"], input[type="color"], input[type="text"] {
     font-size: 20px;
     font-weight: bold;
 }
-/* Stili per il Carrello (carrello.html) */
+
+/* Tavola del Carrello */
 .carrello-container {
     background: white;
     padding: 30px;
@@ -238,7 +274,6 @@ input[type="file"], input[type="color"], input[type="text"] {
     color: var(--text-color);
 }
 
-/* Bottone rosso per rimuovere i prodotti */
 .btn-danger {
     background-color: #e74c3c;
 }
@@ -247,29 +282,8 @@ input[type="file"], input[type="color"], input[type="text"] {
     background-color: #c0392b;
 }
 
-/* Contenitore per affiancare i bottoni finali */
 .azioni-carrello {
     display: flex;
     gap: 15px;
     justify-content: flex-end;
-}
-.cart-header {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-.cart-header a {
-    background: white;
-    color: var(--main-color);
-    padding: 8px 12px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.2s;
-}
-.cart-header a:hover {
-    background: #f0f0f0;
-}
-header {
-    position: relative; /* Per consentire il posizionamento assoluto dell'icona */
 }
