@@ -7,13 +7,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="contenitore">
+<div class="contenitore">
         <h2>Andamento Nazionale COVID-19</h2>
-        <p class="sottotitolo">Visualizzazione degli ultimi 10 giorni registrati</p>
+        
+        <!-- Abbiamo aggiunto id="testo-sottotitolo" per poterlo modificare da JS -->
+        <p class="sottotitolo" id="testo-sottotitolo">Visualizzazione degli ultimi 10 giorni registrati</p>
+        
+        <!-- NUOVO: Area per il filtro -->
+        <div style="margin-bottom: 20px;">
+            <label for="input-giorni">Quanti giorni vuoi vedere? </label>
+            <!-- input di tipo number per inserire solo numeri, con un valore di partenza di 10 -->
+            <input type="number" id="input-giorni" value="10" min="1" style="padding: 5px; width: 60px;">
+            <button id="btn-aggiorna" style="padding: 6px 12px; cursor: pointer;">Aggiorna Tabella</button>
+        </div>
         
         <div class="tabella-wrapper">
             <table id="tabella-covid">
-              
+                <!-- JavaScript inserirà qui i dati -->
             </table>
         </div>
     </div>
