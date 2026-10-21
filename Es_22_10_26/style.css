@@ -1,0 +1,66 @@
+/* Stile generale della pagina */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6; /* Un grigio molto chiaro e professionale */
+    color: #333333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Contenitore principale per centrare il contenuto e dargli un aspetto a "scheda" */
+.contenitore {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px; /* Bordi arrotondati */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leggera ombra per un effetto 3D */
+    width: 95%;
+    max-width: 1200px;
+}
+
+h2 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.sottotitolo {
+    color: #7f8c8d;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Gestione della tabella per farla scorrere se ci sono troppe colonne */
+.tabella-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px; /* Font leggermente più piccolo per far stare più dati */
+}
+
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+/* Stile per le intestazioni create con Object.keys() */
+th {
+    background-color: #2980b9; /* Un blu professionale */
+    color: #ffffff;
+    text-transform: uppercase; /* Testo in maiuscolo */
+    letter-spacing: 0.5px;
+}
+
+/* Effetto striscia: colora le righe pari per una migliore leggibilità */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Effetto hover: evidenzia la riga quando ci passi sopra col mouse */
+tr:hover {
+    background-color: #f1f1f1;
+}
