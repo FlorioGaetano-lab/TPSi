@@ -15,43 +15,40 @@ function elaboraDati(numeroGiorni) {
             const dati = JSON.parse(xhr.responseText);
             const ultimiDati = dati.slice(-numeroGiorni);
             const chiavi = Object.keys(ultimiDati[0]);
-            
-            let htmlTabella = '<thead><tr>';
-            
-
+            let htmlTabella = '<tr>';
             for (let i = 0; i < chiavi.length; i++) {
-
                 let chiavePulita = chiavi[i].replace(/_/g, ' '); 
                 htmlTabella += `<th>${chiavePulita}</th>`;
             }
-            htmlTabella += '</tr></thead><tbody>';
+
+            htmlTabella += '</tr>';
 
             for (let i = 0; i < ultimiDati.length; i++) {
                 htmlTabella += '<tr>';
                 
-
                 let giorno = ultimiDati[i];
+                
 
                 for (let j = 0; j < chiavi.length; j++) {
                     let chiave = chiavi[j];
-                    let valore = giorno[chiave]; 
-
+                    let valore = giorno[chiave];
+            
                     if (chiave === 'data') {
                         const dataOggetto = new Date(valore);
                         valore = dataOggetto.toLocaleDateString('it-IT');
                     } else if (typeof valore === 'number') {
                         valore = valore.toLocaleString('it-IT');
                     }
-
+            
                     htmlTabella += `<td>${valore}</td>`;
                 }
                 
                 htmlTabella += '</tr>';
             }
             
-            htmlTabella += '</tbody>';
+
             tabella.innerHTML = htmlTabella;
-            
+                
         } else {
             console.error("Errore del server. Status:", xhr.status);
             tabella.innerHTML = `<tr><td style="color: red;">Errore del server.</td></tr>`;
