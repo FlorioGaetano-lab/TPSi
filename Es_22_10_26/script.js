@@ -1,6 +1,6 @@
 const urlJSON = 'https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale.json';
 
-async function elaboraDati(numeroGiorni) {
+function elaboraDati(numeroGiorni) {
     const tabella = document.getElementById('tabella-covid');
     const sottotitolo = document.getElementById('testo-sottotitolo');
 
@@ -8,53 +8,71 @@ async function elaboraDati(numeroGiorni) {
     
     tabella.innerHTML = '<tr><td>Caricamento dati in corso... ⏳</td></tr>';
 
-    try {
-        const risposta = await fetch(urlJSON);
-        const dati = await risposta.json();
-        
-        const ultimiDati = dati.slice(-numeroGiorni);
+    const xhr = new XMLHttpRequest();
 
-        const chiavi = Object.keys(ultimiDati[0]);
-        let htmlTabella = '<thead><tr>';
-        
-        chiavi.forEach(chiave => {
-            let chiavePulita = chiave.replace(/_/g, ' '); 
-            htmlTabella += `<th>${chiavePulita}</th>`;
-        });
-        htmlTabella += '</tr></thead><tbody>';
+    xhr.open('GET', urlJSON, true);
+    
+    xhr.onload = function() {
 
-        ultimiDati.forEach(giorno => {
-            htmlTabella += '<tr>';
-            
+        if (xhr.status === 200) {
+
+            const dati = JSON.parse(xhr.responseText);
+
+            const ultimiDati = dati.slice(-numeroGiorni);
+            const chiavi = Object.keys(ultimiDati[0]);
+            let htmlTabella = '<thead><tr>';
+
             chiavi.forEach(chiave => {
-                let valore = giorno[chiave];
+                let chiavePulita = chiave.replace(/_/g, ' '); 
+                htmlTabella += `<th>${chiavePulita}</th>`;
+            });
+            htmlTabella += '</tr></thead><tbody>';
 
-                if (chiave === 'data') {
-                    const dataOggetto = new Date(valore);
-                    valore = dataOggetto.toLocaleDateString('it-IT');
-                } else if (typeof valore === 'number') {
-                    valore = valore.toLocaleString('it-IT');
-                }
+            ultimiDati.forEach(giorno => {
+                htmlTabella += '<tr>';
+                
+                chiavi.forEach(chiave => {
+                    let valore = giorno[chiave];
 
-                htmlTabella += `<td>${valore}</td>`;
+                    if (chiave === 'data') {
+                        const dataOggetto = new Date(valore);
+                        valore = dataOggetto.toLocaleDateString('it-IT');
+                    } 
+
+                    else if (typeof valore === 'number') {
+                        valore = valore.toLocaleString('it-IT');
+                    }
+
+                    htmlTabella += `<td>${valore}</td>`;
+                });
+                
+                htmlTabella += '</tr>';
             });
             
-            htmlTabella += '</tr>';
-        });
-        
-        htmlTabella += '</tbody>';
-        tabella.innerHTML = htmlTabella;
+            htmlTabella += '</tbody>';
 
-    } catch (errore) {
-        console.error("Errore:", errore);
-        tabella.innerHTML = `<tr><td style="color: red;">Impossibile caricare i dati.</td></tr>`;
-    }
+            tabella.innerHTML = htmlTabella;
+            
+        } else {
+
+            console.error("Errore del server. Status:", xhr.status);
+            tabella.innerHTML = `<tr><td style="color: red;">Errore del server: impossibile scaricare i dati.</td></tr>`;
+        }
+    };
+
+
+    xhr.onerror = function() {
+        console.error("Errore di rete durante la richiesta XHR.");
+        tabella.innerHTML = `<tr><td style="color: red;">Errore di rete: controlla la tua connessione.</td></tr>`;
+    };
+
+
+    xhr.send();
 }
 
 elaboraDati(10);
 
 document.getElementById('btn-aggiorna').addEventListener('click', function() {
     const giorniScelti = document.getElementById('input-giorni').value;
-    
     elaboraDati(giorniScelti);
 });
