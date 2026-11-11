@@ -1,52 +1,64 @@
 let tassiDiCambio = {};
 
 function caricaXML() {
-
-    const nomeFile = 'eurofxref-daily.xml';
+    
+    const fileLocale = 'eurofxref-daily.xml';
     
     const xhr = new XMLHttpRequest();
+
+    xhr.open("GET", fileLocale, true);
     
-    xhr.open("GET", nomeFile, true);
-    
+
     xhr.onload = function() {
-        //A volte da codice 0 quindi inserisco or status=0
-        if (xhr.status === 200 || xhr.status === 0) {
+
+        if (xhr.status === 200) {
             try {
-     
+                // Conversione del testo XML in un documento leggibile dal browser
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(xhr.responseText, "text/xml");
                 
+                // Selezione di tutti i nodi <Cube> che possiedono l'attributo currency
                 const nodiValute = xmlDoc.querySelectorAll("Cube[currency]");
                 const menuTendina = document.getElementById("valuta");
                 
+                if (nodiValute.length === 0) {
+                    throw new Error("Nessun nodo valuta trovato all'interno del file XML.");
+                }
+                
+
                 menuTendina.innerHTML = ''; 
                 
                 nodiValute.forEach(nodo => {
                     const nomeValuta = nodo.getAttribute("currency");
                     const tasso = parseFloat(nodo.getAttribute("rate"));
                     
+                    // Salvataggio nel nostro dizionario
                     tassiDiCambio[nomeValuta] = tasso;
                     
+                    // Creazione del tag <option> per il menu a tendina
                     const opzione = document.createElement("option");
                     opzione.value = nomeValuta;
                     opzione.textContent = nomeValuta;
                     menuTendina.appendChild(opzione);
                 });
+
             } catch (errore) {
-                console.error("Si è verificato un errore durante la lettura dell'XML:", errore);
-                document.getElementById("valuta").innerHTML = '<option value="">Errore di lettura file</option>';
+                console.error("Errore nell'analisi del file XML:", errore);
+                document.getElementById("valuta").innerHTML = '<option value="">Errore dati XML</option>';
             }
         } else {
-            console.error("Impossibile trovare il file. Status:", xhr.status);
-            document.getElementById("valuta").innerHTML = '<option value="">File non trovato</option>';
+            console.error("File XML non trovato o errore server. Codice HTTP:", xhr.status);
+            document.getElementById("valuta").innerHTML = '<option value="">Errore ' + xhr.status + '</option>';
         }
     };
 
+
     xhr.onerror = function() {
-        console.error("Errore di accesso al file locale. Potrebbe essere un blocco di sicurezza del browser.");
-        document.getElementById("valuta").innerHTML = '<option value="">Blocco di sicurezza</option>';
+        console.error("Errore di rete durante la richiesta del file.");
+        document.getElementById("valuta").innerHTML = '<option value="">Errore di rete</option>';
     };
     
+
     xhr.send();
 }
 
@@ -65,11 +77,11 @@ function calcolaConversione() {
         return;
     }
 
+ 
     const tasso = tassiDiCambio[valutaScelta];
     const totale = importo * tasso;
 
     areaRisultato.innerHTML = `${importo} EUR = <strong>${totale.toFixed(2)} ${valutaScelta}</strong>`;
 }
 
-// Avvia la funzione principale
 caricaXML();
