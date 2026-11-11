@@ -1,7 +1,5 @@
-// Oggetto globale per memorizzare i tassi di cambio
 let tassiDiCambio = {};
 
-// Dizionario di supporto per associare i codici ISO ai nomi estesi delle valute in italiano
 const nomiValute = {
     USD: "Dollaro Statunitense",
     JPY: "Yen Giapponese",
@@ -35,7 +33,6 @@ const nomiValute = {
     ZAR: "Rand Sudafricano"
 };
 
-// Funzione per caricare e leggere il file XML locale
 function caricaXML() {
     const fileLocale = 'eurofxref-daily.xml';
     const xhr = new XMLHttpRequest();
@@ -61,15 +58,12 @@ function caricaXML() {
                     const codiceValuta = nodo.getAttribute("currency");
                     const tasso = parseFloat(nodo.getAttribute("rate"));
                     
-                    // Salviamo il tasso numerico associato al codice (es. tassiDiCambio["USD"] = 1.08)
                     tassiDiCambio[codiceValuta] = tasso;
-                    
-                    // Componiamo la stringa visibile: se la valuta è presente nel dizionario mostriamo "USD (Dollaro Statunitense)", altrimenti solo "USD"
+
                     const nomeCompleto = nomiValute[codiceValuta] 
                         ? `${codiceValuta} (${nomiValute[codiceValuta]})` 
                         : codiceValuta;
                     
-                    // Creazione del tag <option>
                     const opzione = document.createElement("option");
                     opzione.value = codiceValuta;
                     opzione.textContent = nomeCompleto;
@@ -94,7 +88,7 @@ function caricaXML() {
     xhr.send();
 }
 
-// Funzione per calcolare e mostrare la conversione
+
 function calcolaConversione() {
     const importo = document.getElementById("importo").value;
     const valutaScelta = document.getElementById("valuta").value;
@@ -110,18 +104,15 @@ function calcolaConversione() {
         return;
     }
 
-    // Calcolo della conversione
+
     const tasso = tassiDiCambio[valutaScelta];
     const totale = importo * tasso;
-    
-    // Recupero del nome esteso per la visualizzazione del risultato
+   
     const nomeCompleto = nomiValute[valutaScelta] 
         ? `${valutaScelta} (${nomiValute[valutaScelta]})` 
         : valutaScelta;
 
-    // Stampa del risultato formattato in HTML
     areaRisultato.innerHTML = `${importo} EUR = <strong>${totale.toFixed(2)} ${nomeCompleto}</strong>`;
 }
 
-// Esecuzione immediata della funzione di carica XML
 caricaXML();
