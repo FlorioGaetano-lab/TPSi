@@ -1,11 +1,11 @@
 let tassiDiCambio = {};
 
-// Funzione per caricare il file XML con XMLHttpRequest e il servizio AllOrigins /raw
+// Funzione per caricare il file XML tramite XMLHttpRequest da GitHub Pages
 function caricaXML() {
     const urlBCE = 'https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml';
     
-    // L'endpoint /raw di AllOrigins gestisce la codifica URI e restituisce direttamente l'XML
-    const urlProxy = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(urlBCE);
+    // Proxy aperto e compatibile con le richieste da GitHub Pages
+    const urlProxy = 'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(urlBCE);
     
     const xhr = new XMLHttpRequest();
     xhr.open("GET", urlProxy, true);
@@ -16,12 +16,12 @@ function caricaXML() {
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(xhr.responseText, "text/xml");
                 
-                // Estrazione dei nodi contenenti valuta e tasso
+                // Estrazione dei nodi contenenti la valuta e il tasso di cambio
                 const nodiValute = xmlDoc.querySelectorAll("Cube[currency]");
                 const menuTendina = document.getElementById("valuta");
                 
                 if (nodiValute.length === 0) {
-                    throw new Error("Nodi valuta non trovati nel documento XML.");
+                    throw new Error("Nessun elemento valuta trovato nel file XML.");
                 }
                 
                 menuTendina.innerHTML = ''; 
@@ -39,10 +39,10 @@ function caricaXML() {
                 });
             } catch (errore) {
                 console.error("Errore nell'analisi del file XML:", errore);
-                document.getElementById("valuta").innerHTML = '<option value="">Errore formato XML</option>';
+                document.getElementById("valuta").innerHTML = '<option value="">Errore dati XML</option>';
             }
         } else {
-            console.error("Richiesta fallita. Codice di stato HTTP:", xhr.status);
+            console.error("Errore HTTP durante la richiesta:", xhr.status);
             document.getElementById("valuta").innerHTML = '<option value="">Errore ' + xhr.status + '</option>';
         }
     };
@@ -55,7 +55,7 @@ function caricaXML() {
     xhr.send();
 }
 
-// Funzione per eseguire la conversione in base alla quantità inserita
+// Funzione per calcolare la conversione dall'importo in Euro
 function calcolaConversione() {
     const importo = document.getElementById("importo").value;
     const valutaScelta = document.getElementById("valuta").value;
@@ -77,5 +77,5 @@ function calcolaConversione() {
     areaRisultato.innerHTML = `${importo} EUR = <strong>${totale.toFixed(2)} ${valutaScelta}</strong>`;
 }
 
-// Inizializzazione della richiesta al caricamento dello script
+// Esecuzione al caricamento dello script
 caricaXML();
