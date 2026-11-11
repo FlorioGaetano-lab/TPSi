@@ -1,12 +1,11 @@
 let tassiDiCambio = {};
 
-// Funzione per caricare il file XML con XMLHttpRequest e il proxy corsproxy.io
+// Funzione per caricare il file XML con XMLHttpRequest e il servizio AllOrigins /raw
 function caricaXML() {
-    // URL ufficiale della BCE in HTTPS
     const urlBCE = 'https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml';
     
-    // Inoltriamo la richiesta tramite corsproxy.io
-    const urlProxy = 'https://corsproxy.io/?' + encodeURIComponent(urlBCE);
+    // L'endpoint /raw di AllOrigins gestisce la codifica URI e restituisce direttamente l'XML
+    const urlProxy = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(urlBCE);
     
     const xhr = new XMLHttpRequest();
     xhr.open("GET", urlProxy, true);
@@ -14,13 +13,16 @@ function caricaXML() {
     xhr.onload = function() {
         if (xhr.status === 200) {
             try {
-                // corsproxy.io restituisce direttamente il contenuto XML originale
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(xhr.responseText, "text/xml");
                 
-                // Selezione di tutti i nodi valuta <Cube currency="..." rate="...">
+                // Estrazione dei nodi contenenti valuta e tasso
                 const nodiValute = xmlDoc.querySelectorAll("Cube[currency]");
                 const menuTendina = document.getElementById("valuta");
+                
+                if (nodiValute.length === 0) {
+                    throw new Error("Nodi valuta non trovati nel documento XML.");
+                }
                 
                 menuTendina.innerHTML = ''; 
                 
@@ -36,24 +38,24 @@ function caricaXML() {
                     menuTendina.appendChild(opzione);
                 });
             } catch (errore) {
-                console.error("Errore nell'elaborazione del file XML:", errore);
+                console.error("Errore nell'analisi del file XML:", errore);
                 document.getElementById("valuta").innerHTML = '<option value="">Errore formato XML</option>';
             }
         } else {
-            console.error("Impossibile contattare il server. Status HTTP:", xhr.status);
-            document.getElementById("valuta").innerHTML = '<option value="">Errore di connessione</option>';
+            console.error("Richiesta fallita. Codice di stato HTTP:", xhr.status);
+            document.getElementById("valuta").innerHTML = '<option value="">Errore ' + xhr.status + '</option>';
         }
     };
 
     xhr.onerror = function() {
-        console.error("Errore di rete durante la richiesta HTTP.");
+        console.error("Errore di rete durante la trasmissione della richiesta.");
         document.getElementById("valuta").innerHTML = '<option value="">Errore di rete</option>';
     };
     
     xhr.send();
 }
 
-// Funzione per effettuare il calcolo della conversione
+// Funzione per eseguire la conversione in base alla quantità inserita
 function calcolaConversione() {
     const importo = document.getElementById("importo").value;
     const valutaScelta = document.getElementById("valuta").value;
@@ -75,5 +77,5 @@ function calcolaConversione() {
     areaRisultato.innerHTML = `${importo} EUR = <strong>${totale.toFixed(2)} ${valutaScelta}</strong>`;
 }
 
-// Avvio della procedura di caricamento dei tassi
+// Inizializzazione della richiesta al caricamento dello script
 caricaXML();
