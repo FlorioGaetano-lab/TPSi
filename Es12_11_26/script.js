@@ -1,20 +1,18 @@
 let tassiDiCambio = {};
 
-// Funzione per leggere il file XML locale
 function caricaXML() {
-    // Ora non ci serve più un URL di internet, scriviamo solo il nome del file locale
+
     const nomeFile = 'eurofxref-daily.xml';
     
     const xhr = new XMLHttpRequest();
     
-    // Apriamo il file locale
     xhr.open("GET", nomeFile, true);
     
     xhr.onload = function() {
-        // Nota: quando si leggono file locali, il browser spesso restituisce status 0 invece di 200
+        //A volte da codice 0 quindi inserisco or status=0
         if (xhr.status === 200 || xhr.status === 0) {
             try {
-                // Non serve più usare JSON.parse. Il file è direttamente testo XML!
+     
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(xhr.responseText, "text/xml");
                 
@@ -49,11 +47,9 @@ function caricaXML() {
         document.getElementById("valuta").innerHTML = '<option value="">Blocco di sicurezza</option>';
     };
     
-    // Inviamo la richiesta per leggere il file
     xhr.send();
 }
 
-// La funzione di conversione rimane identica, la logica matematica non cambia
 function calcolaConversione() {
     const importo = document.getElementById("importo").value;
     const valutaScelta = document.getElementById("valuta").value;
